@@ -13,6 +13,7 @@ def get_readme():
     if resp.status_code != 200:
         print('Cannot access huggingface!')
     else:
+        print('retrieving model readme from huggingface...')
         soup = BeautifulSoup(resp.content, 'html.parser')
         models = soup.find_all('h4')
         for model in tqdm(models):

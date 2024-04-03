@@ -1,0 +1,8 @@
+Given the following huggingface model name and readme delimited by triple backquotes, describe the model in 50 words.
+
+```
+MODEL_NAME: {model_name}
+README: {readme}
+```
+
+DESCRIPTION IN 50 WORDS:

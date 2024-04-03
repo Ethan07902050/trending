@@ -1,0 +1,14 @@
+There are some common topics among the following papers delimited by triple backquotes.
+Discover the most important topics, analyze the prevailing challenges, and forecast future research directions extrapolated from these papers.
+Answer in bullet point with the format
+- TOPIC:
+    - DESCRIPTION:
+    - CHALLENGE:
+    - FUTURE DIRECTION:
+    - EXAMPLE PAPERS:
+
+```
+{text}
+```
+
+BULLET POINT ANALYSIS:

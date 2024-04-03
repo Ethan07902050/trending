@@ -1,0 +1,8 @@
+Discover key research trend among the following huggingface models delimited by triple backquotes.
+Introduce each trend briefly in bullet points, along with some models as examples.
+
+```
+{text}
+```
+
+BULLET POINT TRENDING RESEARCH:

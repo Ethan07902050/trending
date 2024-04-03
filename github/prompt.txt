@@ -1,0 +1,8 @@
+Given the following github repository name and readme delimited by triple backquotes, describe the repository in 50 words.
+
+```
+REPOSITORY_NAME: {repo_name}
+README: {readme}
+```
+
+DESCRIPTION IN 50 WORDS:

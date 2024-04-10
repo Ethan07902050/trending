@@ -1,0 +1,14 @@
+List top {num} keywords among the following paper titles delimited by triple backquotes.
+
+```
+{titles}
+```
+
+Answer in the following json format:
+```
+{
+    "keywords": []
+}
+```
+
+Response:

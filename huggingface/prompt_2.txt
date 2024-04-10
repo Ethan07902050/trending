@@ -1,8 +1,23 @@
-Discover key research trend among the following huggingface models delimited by triple backquotes.
-Introduce each trend briefly in bullet points, along with some models as examples.
+你是一名講者，即將在一場中文的AI應用論壇上分享。
+參加者沒有AI領域的背景知識，你需要用簡單明瞭的方式解釋每一個專有名詞，並且向參與者介紹該技術的發展脈絡。
+以下的模型介紹是你的演講資料，請詳細分析現今的研究趨勢，萃取五個最重要的模型應用，作為演講的主題。
 
 ```
 {text}
 ```
 
-BULLET POINT TRENDING RESEARCH:
+請以「繁體中文」回答，在專有名詞後附上原文，並且用 json 格式輸出：
+```
+{
+    "模型應用概述": "",
+    "模型應用領域": [
+        {
+            "名稱": "",
+            "描述": "",
+            "範例模型": []
+        }
+    ]
+}
+```
+
+輸出：

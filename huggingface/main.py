@@ -24,11 +24,25 @@ def get_readme():
 
     return outputs
 
+def find_json_object(input_string):
+    start_index = input_string.find('{')
+    end_index = input_string.rfind('}')
+
+    if start_index != -1 and end_index != -1:
+        json_string = input_string[start_index:end_index+1]
+        try:
+            json_object = json.loads(json_string)
+            return json_object
+        except json.JSONDecodeError:
+            pass
+
+    return None
+
 def summarize(prompt):
     client = anthropic.Anthropic()
     message = client.messages.create(
         model="claude-3-opus-20240229",
-        max_tokens=1024,
+        max_tokens=4096,
         messages=[
             {"role": "user", "content": prompt},
         ]
@@ -39,7 +53,8 @@ def summarize(prompt):
 def main(
     prompt_1_path='prompt_1.txt',
     prompt_2_path='prompt_2.txt',
-    output_path='model_summary.txt'
+    readme_path='readme.json',
+    output_path='model_summary.json'
 ):
     readmes = get_readme()
     if len(readmes) == 0:
@@ -59,15 +74,25 @@ def main(
         print(model_name)
         print(samples[model_name])
 
+    with open(readme_path, 'w') as f:
+        json.dump(samples, f, indent=2)
+
     # stage 2
     samples = [f'MODEL_NAME: {model_name}\nSUMMARY:{summary}\n' for model_name, summary in samples.items()]
     text = '\n'.join(samples)
-    prompt = prompt_template_2.format(text=text)
+    prompt = prompt_template_2.replace('{text}', text)
     summary = summarize(prompt)
+    print(prompt)
+    print('-' * 50)
     print(summary)
 
-    with open(output_path, 'w') as f:
-        f.write(summary)
+    # save as json
+    summary_json = find_json_object(summary)
+    if summary_json is not None:
+        with open(output_path, 'w', encoding='utf8') as f:
+            json.dump(summary_json, f, indent=2, ensure_ascii=False)
+    else:
+        print('cannot find json object from LLM response!')
 
 if __name__ == '__main__':
     fire.Fire(main)
